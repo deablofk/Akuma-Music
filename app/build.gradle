@@ -1,0 +1,30 @@
+plugins {
+    id 'application'
+}
+
+repositories {
+    mavenCentral()
+    maven {
+	    url 'https://jitpack.io'
+    }
+}
+
+dependencies {
+	implementation 'net.dv8tion:JDA:5.0.0-alpha.22'
+	implementation 'com.moandjiezana.toml:toml4j:0.7.2'
+	implementation 'com.github.walkyst:lavaplayer-fork:1.3.99.1'
+}
+
+application {
+    mainClass = 'akuma.music.App'
+}
+
+task customFatJar(type: Jar) {
+    manifest {
+        attributes "Main-Class": "akuma.music.App"
+    }
+    baseName = 'AkumaMusicAllDependencies'
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    from { configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}

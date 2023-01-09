@@ -1,0 +1,9 @@
+description = "descriptuoenhusntaoehsutn"
+type = "RICH"
+color = 536870911
+length = -1
+
+[[fields]]
+name = "nameTeste"
+value = "valueTeste"
+inline = false
